@@ -41,7 +41,6 @@
 \RequirePackage{calc}
 \RequirePackage[usenames,dvipsnames,svgnames]{xcolor}
 \RequirePackage{translations}
-\RequirePackage{fontawesome}
 \RequirePackage{mdframed}
 \RequirePackage{listings}
 \RequirePackage{xparse}
@@ -112,7 +111,8 @@
 %		Font Configuration
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newfontfamily{\FA}{FontAwesome}
+\setfontfamily{\FA}{Font Awesome 5 Free Regular}
+\setfontfamily{\FASolid}{Font Awesome 5 Free Solid}
 
 
 
@@ -180,14 +180,12 @@
 \newlength{\yIconHorizontalOffset}
 \setlength{\yIconHorizontalOffset}{.73cm}
 % General Command
-\ifinfoBulleMarginIcons
-	\DeclareDocumentCommand{\@titleContent}{m m m}{%
+\DeclareDocumentCommand{\@titleContent}{m m m}{%
+	\ifinfoBulleMarginIcons
 		\llap{#2\hspace*{\yIconHorizontalOffset}}%
 		\mbox{}%
 		\infoBulleTitleFormat#3%
-	}
-\else
-	\DeclareDocumentCommand{\@titleContent}{m m m}{%		
+	\else
 		\@afterindentfalse\@afterheading%
 		\mbox{}%
 		\parbox[t][2\pgfkeysvalueof{/infoBulle/icon/radius}]{.75cm}{%
@@ -199,8 +197,8 @@
 				\mbox{}%
 				\infoBulleTitleFormat#3%
 		}%
-	}%
-\fi
+	\fi
+}%
 % Command for titles n two part (one in bold, the other normal)
 % icon color, icon, title part one, title part two
 \DeclareDocumentCommand{\@titleContentTwoPart}{m m m m}{%
@@ -241,7 +239,7 @@
 % infoInfo
 %-------------------------------------------------------------------------------
 \newcommand{\infoIcon}{%
-	\infoBulleAbstractIcon{informationColor}{\faInfo}
+	\infoBulleAbstractIcon{informationColor}{\FASolid\symbol{"F129}}
 }
 \DeclareDocumentCommand{\infoInfo}{m +m}{\@infoBulleSkeleton{informationColor}{\infoIcon}{#1}{#2}}
 \NewDocumentEnvironment{InfoInfo}{m}
@@ -249,10 +247,10 @@
 	{\end{@infoBulleSkeletonEnv}}
 
 
-% warningInfo
+% warningInfoexclamation
 %-------------------------------------------------------------------------------
 \newcommand{\warningIcon}{%
-	\infoBulleAbstractIcon{warningColor}{\faExclamation}
+	\infoBulleAbstractIcon{warningColor}{\FASolid\symbol{"F12A}}
 }
 \DeclareDocumentCommand{\warningInfo}{m +m}{\@infoBulleSkeleton{warningColor}{\warningIcon}{#1}{#2}}
 \NewDocumentEnvironment{WarningInfo}{m}
@@ -263,7 +261,7 @@
 % criticalInfo
 %-------------------------------------------------------------------------------
 \newcommand{\criticalIcon}{%
-	\infoBulleAbstractIcon{criticalColor}{\faTimes}
+	\infoBulleAbstractIcon{criticalColor}{\FASolid\symbol{"F00D}}
 }
 \DeclareDocumentCommand{\criticalInfo}{m +m}{\@infoBulleSkeleton{criticalColor}{\criticalIcon}{#1}{#2}}
 \NewDocumentEnvironment{CriticalInfo}{m}
@@ -274,7 +272,7 @@
 % checkInfo
 %-------------------------------------------------------------------------------
 \newcommand{\checkIcon}{%
-	\infoBulleAbstractIcon{checkColor}{\faCheck}
+	\infoBulleAbstractIcon{checkColor}{\FASolid\symbol{"F00C}}
 }
 \DeclareDocumentCommand{\checkInfo}{m +m}{\@infoBulleSkeleton{checkColor}{\checkIcon}{#1}{#2}}
 \NewDocumentEnvironment{CheckInfo}{m}
@@ -285,7 +283,7 @@
 % questionInfo
 %-------------------------------------------------------------------------------
 \newcommand{\questionIcon}{%
-	\infoBulleAbstractIcon{questionColor}{\faQuestion}
+	\infoBulleAbstractIcon{questionColor}{\FASolid\symbol{"F128}}
 }
 \DeclareDocumentCommand{\questionInfo}{m +m}{\@infoBulleSkeleton{questionColor}{\questionIcon}{#1}{#2}}
 \NewDocumentEnvironment{QuestionInfo}{m}
@@ -306,7 +304,7 @@
 % codeInfo
 %-------------------------------------------------------------------------------
 \newcommand{\codeIcon}{%
-	\infoBulleAbstractIcon{Grey}{\faCode}
+	\infoBulleAbstractIcon{Grey}{\FASolid\symbol{"F121}}
 }
 \lstnewenvironment{CodeInfoLst}[1][Python]
 {

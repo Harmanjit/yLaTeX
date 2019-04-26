@@ -41,26 +41,16 @@
 \usetikzlibrary{calc}
 \RequirePackage{xparse}
 \RequirePackage{fontspec}
-\RequirePackage{fontawesome}
 \RequirePackage{hyperref}
 
 \RequirePackage{yMainColor}
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%		Font
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\newfontface{\FA}{FontAwesome}
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %		Utilities
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand{\emaillink}[1]{%
+\newcommand{\yauthorblockemaillink}[1]{%
 	{\hypersetup{urlcolor=black}\href{mailto:#1}{#1}}%
 }
 
@@ -136,7 +126,7 @@
 	\blockLine{#2}{#1}%
 }
 \DeclareDocumentCommand{\authorMail}{m O{\extraVerticalSpace\faEnvelopeO}}{
-	\blockLine{#2}{\emaillink{#1}}%
+	\blockLine{#2}{\yauthorblockemaillink{#1}}%
 }
 \DeclareDocumentCommand{\authorWebsite}{m O{\extraVerticalSpace{\FA\symbol{"F245}}}}{
 	\blockLine{#2}{\url{#1}}%
